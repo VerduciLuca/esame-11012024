@@ -1,0 +1,86 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat+Subrayada&display=swap');
+.header{
+    background-color: #393939;
+    margin: 0px;
+    margin-bottom:16px;
+    display: flex;
+    padding: 8px;
+    user-select: none;
+    box-shadow: 0px 7px 19px -2px #000000b4;
+
+
+}
+.fav-icon{
+  transition: all ease-in-out 0.2s ;
+}
+
+.fav-icon:hover{
+  color: red;
+
+}
+
+.fav-icon{
+  margin-right: 50px;
+}
+
+h1 {
+  margin: 0;
+  color: #ffffff;
+  padding-left: 16px;
+  font-family: 'Montserrat Subrayada', sans-serif;
+
+}
+
+.spacer{
+    flex:1;
+    margin-left:16px
+}
+
+a:not(.favs) {
+  overflow: hidden;
+  position: relative;
+  display: inline-block;
+}
+
+a:not(.favs)::before,
+a:not(.favs)::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  left: 0;
+}
+
+a:not(.favs)::before {
+  background-color: #999999;
+  height: 2px;
+  bottom: 0;
+  transform-origin: 100% 50%;
+  transform: scaleX(0);
+  transition: transform .3s cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+a:not(.favs)::after {
+  content: attr(data-replace);
+  height: 100%;
+  top: 0;
+  transform-origin: 80% 50%;
+  transform: translate3d(200%, 0, 0);
+  transition: transform .3s cubic-bezier(0.76, 0, 0.24, 1);
+  color: #ffffff;
+}
+
+a:not(.favs):hover::before {
+  transform-origin: 0% 50%;
+  transform: scaleX(1);
+}
+
+a:not(.favs):hover::after {
+  transform: translate3d(0, 0, 0);
+}
+
+.favs h1{
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+

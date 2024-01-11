@@ -20,13 +20,13 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'angular-api-app'`, () => {
+  it(`should have as name 'angular-api-app'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('angular-api-app');
+    expect(app.name).toEqual('angular-api-app');
   });
 
-  it('should render title', () => {
+  it('should render name', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;

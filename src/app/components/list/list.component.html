@@ -1,0 +1,53 @@
+<div *ngIf="_countries.length>0" class="page-btns">
+  <p></p>
+</div>
+
+<div *ngIf="_countries.length>0" class="dropdown-container">
+  <div class="dropdown">
+    <button class="dropdown-button">🝖</button>
+    <div class="dropdown-content">
+      <a id="eastern" (click)="getCountriesBySubregion('Eastern Europe')">Eastern Europe</a>
+      <a id="western" (click)="getCountriesBySubregion('Western Europe')">Western Europe</a>
+      <a id="northern" (click)="getCountriesBySubregion('Northern Europe')">Northern Europe</a>
+      <a id="southern" (click)="getCountriesBySubregion('Southern Europe')">Southern Europe</a>
+      <a id="all" (click)="getCountries()">All</a>
+    </div>
+  </div>
+  <div class="spacer"></div>
+
+  <p class="lens">🔎</p>
+
+  <input #searchInput type="text" placeholder="Search for a country..." (keyup.enter)="searchCountries(searchInput.value)" />
+</div>
+
+<div class="country-container" *ngIf="!isLoading">
+
+  <div *ngFor="let country of _countries" class="country-card">
+
+    <a [routerLink]="['/country', country.id]">
+      <img *ngIf="country.flagUrl" class="country-flag" [src]="country.flagUrl" />
+      <h3>{{country.name.common}}</h3>
+      <div *ngIf="country.fifa">
+        {{country.fifa}}
+      </div>
+      <p>Population: {{country.population}}</p>
+    </a>
+  </div>
+
+  <div *ngIf="_countries.length==0 && !isLoading" class="no-countrys-found">
+    <h1>Sorry</h1>
+    <p class="emoji">( ｡ • ᴖ • ｡)</p>
+    <h2>There's no country matching your search</h2>
+    <p>Try searching for another one!</p>
+    <input #searchInput type="text" placeholder="Search for a country..." (keyup.enter)="searchCountries(searchInput.value)" />
+  </div>
+</div>
+
+<div *ngIf="isLoading" class="loading">
+  <p class="emoji-country">🌎</p>
+  <p class="loading-text">loading...</p>
+</div>
+
+<div *ngIf="_countries.length>0" class="page-btns">
+  <p>🌎</p>
+</div>
